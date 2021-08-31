@@ -1,8 +1,14 @@
 // import functions and grab DOM elements
-
-// initialize global state
-
+import { renderNewPokemon } from './utils.js';
+import { getRandomPokemon } from './utils.js';
+import { getPokedex } from './utils.js';
+import { setPokedex } from './utils.js';
+// initialize state
+console.log(renderNewPokemon);
 // set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+  // User clicks catch button
+  // - increment: `pokeCaught++`
+  // - We figure out the id of the pokemon that was captured.
+  //     - call `catchPokemon(id)` with this id
+  // - now, if `pokeCaught > 10`, redirect to the results page
+  // - call `renderNewPokemon()`
