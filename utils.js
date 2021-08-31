@@ -1,87 +1,57 @@
 import pokemon from './data.js';
-
-export function findById(myArray, id) {
-    // loop through the array
-    for (let item of myArray) {
-        // if this item's id matches the id we were passed as an argument . . .
-        if (item.id === id) {
-          // . . . return that item
-            return item;
-        }
+import { encounterPokemon } from './local-storage.js';
+export function findById(someArray, someId) {
+    const numberId = Number(someId);
+    for (let item of someArray) {
+        if (item.id === numberId) return item;
     }
+
+    return null;
 }
 
+const radio1 = document.querySelector('#poke-1');
+const radio2 = document.querySelector('#poke-2');
+const radio3 = document.querySelector('#poke-3');
+const img1 = document.querySelector('#poke-img-1');
+const img2 = document.querySelector('#poke-img-2');
+const img3 = document.querySelector('#poke-img-3');
+export function renderThreePokemon() {
+    //   - Generate three new random pokemon
+    let poke1 = getRandomPokemon();
+    let poke2 = getRandomPokemon();
+    let poke3 = getRandomPokemon();
 
-
-
-function getRandomIndex() {
-    return Math.floor(Math.random() * pokemon.length);
-}
-// getRandomPokemon()
-// - does the hard work of finding three unique and random pokemon from our raw data
-// - returns an array of three random pokemon
-
-export function getRandomPokemon() {
-    let randomIndex1 = getRandomIndex();
-    let randomIndex2 = getRandomIndex();
-    let randomIndex3 = getRandomIndex();
-
+    // we need to check to see if any of our random pokemon are the same
+    //   - Q: How do we prevent repeats? (A: use a `while` loop)
     while (
-        randomIndex1 === randomIndex2 
-        || randomIndex2 === randomIndex3 
-        || randomIndex1 === randomIndex3) {
-        randomIndex1 = getRandomIndex();
-        randomIndex2 = getRandomIndex();
-        randomIndex3 = getRandomIndex();
+        poke1.id === poke2.id 
+      || poke1.id === poke3.id 
+      || poke2.id === poke3.id
+    ) {
+        // generate three new pokemon
+        poke1 = getRandomPokemon();
+        poke2 = getRandomPokemon();
+        poke3 = getRandomPokemon();
     }
-
-    return [
-        pokemon[randomIndex1], 
-        pokemon[randomIndex2], 
-        pokemon[randomIndex3]
-    ];
-}
-
-
-export function renderNewPokemon(){
     
-    let newPoke = getRandomPokemon();
-    //     - Whenever we find 3 new pokemon, we need to track that they have now been "seen"
-    //     - call encounterPokemon() on all 3 new pokemon
-    
-}
-    
+    // - Look at these new three pokemon and increment their `encountered` properties
+    encounterPokemon(poke1.id);
+    encounterPokemon(poke2.id);
+    encounterPokemon(poke3.id);
 
-// setPokedex(pokedex)
-// - takes in a pokedex, stringifies it and puts it into local storage
-const CAUGHT = 'CAUGHT';
-export function setPokedex(myArray){
-    const stringyArray = JSON.stringify(myArray);
-    // takes the array and makes it a string
-    localStorage.setItem(CAUGHT, stringyArray);
-    // puts the stringy array in local storage with key=Cart and value = to stringArray
+    // Rerender the pokemon images
+    img1.src = poke1.url_image;
+    img2.src = poke2.url_image;
+    img3.src = poke3.url_image;
+    // add values to the radio buttons
+    radio1.value = poke1.id;
+    radio2.value = poke2.id;
+    radio3.value = poke3.id;
 }
-// getPokedex()
-// - retrieves and parses the pokedex in local storage
-export function getPokedex(){
-    // grabs the CAUGHT in local storage
-    
-    const stringyItems = localStorage.getItem(CAUGHT);
-    if (!stringyItems) {
-        return [];
-    }
-    // parse the cart
-    const unstringyItems = JSON.parse(stringyItems);
-    return unstringyItems;
-}
-// encounterPokemon(id)
-// - getPokedex
-// - If the pokemon has been previously seen, just increment the times seen
-// - If this is the first time, make a new object with `{ id: 5, encoutered: 1, caught: 0 }`
-// - setPokedex
+function getRandomPokemon() {
+    const randomIndex = Math.floor(Math.random() * pokemon.length);
 
-// catchPokemon(id)
-// - getPokedex
-// - no need to check if it's been encountered. If you got this far, it _has_ been encountered.
-// - Increment the `caught` of this pokemon in local storage
-// - setPokedex
+    const randomPokemon = pokemon[randomIndex];
+
+    return randomPokemon;
+}
