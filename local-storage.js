@@ -29,7 +29,7 @@ export function capturePokemon(selectedPokemonId) {
 }
 
 
-export function encounterPokemon(selectedPokemonId) {
+export function seenPokemon(selectedPokemonId) {
     const pokedex = getPokedex();
 
     const findPokemon = findById(pokedex, selectedPokemonId);

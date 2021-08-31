@@ -9,11 +9,11 @@ renderThreePokemon();
 
 button.addEventListener('click', () => {
   // On clicking "capture" button
-    const selectedRadio = document.querySelector(':checked');
-    const selectedPokemonId = selectedRadio.value;
+    const caughtRadio = document.querySelector(':checked');
+    const caughtPokemonId = caughtRadio.value;
 
-    capturePokemon(selectedPokemonId);
-  // - call `renderThreePokemon`
+    capturePokemon(caughtPokemonId);
+  
     renderThreePokemon();
 });
 
