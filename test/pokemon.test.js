@@ -1,4 +1,3 @@
-import { renderThreePokemon } from '../utils.js';
 import { capturePokemon, setPokedex } from '../local-storage.js';
 import { seenPokemon, getPokedex } from '../local-storage.js';
 // import pokemon from '../data.js';
