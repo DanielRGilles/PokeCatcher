@@ -1,1 +1,51 @@
-/* add home page styles here */
+h1 {
+    text-align: center;
+    /* align-items: center; */
+}
+.btn {
+    width: 120px;
+    height: 60px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 8%;
+    left: 46%;
+    right: 50%;
+}
+.btn:hover {
+    background-color: black;
+    color: white;
+    transition: 1000ms ease-in;
+
+}
+input[type=radio]:checked + img {
+    border: solid 4px rgb(12, 12, 12);
+    transform: scale(115%);
+}
+input {
+    display: none;
+}
+
+.poke {
+    width: 250px;
+}
+.main-section {
+    display: flex;
+    width: 75%; 
+    height: 60vh;
+    flex-direction: row;
+    justify-content: space-between; 
+    margin-top: 5%;
+    }
+body {
+    background-image: url(../assets/bg32.jpg);
+   box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.info-box {
+    color: white;
+    border: dashed 2px white;
+    margin-top: 25px;
+    text-align: center;
+    background-color: rgba(100, 100, 100, .7);
+}
