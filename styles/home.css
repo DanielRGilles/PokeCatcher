@@ -49,3 +49,11 @@ body {
     text-align: center;
     background-color: rgba(100, 100, 100, .7);
 }
+
+.chart-obj {
+    width: 45%;
+    height: 25%;
+    margin-top: 5%;
+    background-color: rgba(100, 100, 100, .6);
+    color: ivory;
+}

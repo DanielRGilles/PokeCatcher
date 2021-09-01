@@ -3,7 +3,7 @@ import { capturePokemon } from './local-storage.js';
 import { renderThreePokemon } from './utils.js';
 
 const button = document.querySelector('#catch');
-
+let caughtPokemon = 0;
 
 renderThreePokemon();
 
@@ -15,6 +15,10 @@ button.addEventListener('click', () => {
     capturePokemon(caughtPokemonId);
   
     renderThreePokemon();
+    caughtPokemon++;
+    if (caughtPokemon > 10) {
+        window.location.href = './results/index.html'; 
+    }
 });
 
 

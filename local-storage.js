@@ -1,5 +1,5 @@
 import { findById } from './utils.js';
-
+import Rawpokemon from './data.js';
 const PDEX = 'PDEX';
 
 export function getPokedex() {
@@ -25,13 +25,15 @@ export function capturePokemon(selectedPokemonId) {
 export function seenPokemon(selectedPokemonId) {
     const pokedex = getPokedex();
     const findPokemon = findById(pokedex, selectedPokemonId);
+    let pokeName = findById(Rawpokemon, selectedPokemonId);
     if (findPokemon) {
         findPokemon.encountered++;
     } else {
         const newItem = {
             captured: 0,
             encountered: 1,
-            id: selectedPokemonId
+            id: selectedPokemonId,
+            name: pokeName.pokemon
         };
         pokedex.push(newItem);
     }
