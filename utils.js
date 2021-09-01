@@ -5,7 +5,6 @@ export function findById(someArray, someId) {
     for (let item of someArray) {
         if (item.id === numberId) return item;
     }
-
     return null;
 }
 
@@ -39,7 +38,7 @@ export function renderThreePokemon() {
     seenPokemon(poke1.id);
     seenPokemon(poke2.id);
     seenPokemon(poke3.id);
-
+    
    
     img1.src = poke1.url_image;
     img2.src = poke2.url_image;
