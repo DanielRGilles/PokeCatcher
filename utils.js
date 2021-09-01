@@ -35,12 +35,12 @@ export function renderThreePokemon() {
         poke3 = getRandomPokemon();
     }
     
-    // - Look at these new three pokemon and increment their `encountered` properties
+   
     seenPokemon(poke1.id);
     seenPokemon(poke2.id);
     seenPokemon(poke3.id);
 
-    // // Rerender the pokemon images
+   
     img1.src = poke1.url_image;
     img2.src = poke2.url_image;
     img3.src = poke3.url_image;

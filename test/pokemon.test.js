@@ -1,59 +1,68 @@
 import { renderThreePokemon } from '../utils.js';
-import { capturePokemon } from '../local-storage.js';
-import { seenPokemon } from '../local-storage.js';
-
+import { capturePokemon, setPokedex } from '../local-storage.js';
+import { seenPokemon, getPokedex } from '../local-storage.js';
+// import pokemon from '../data.js';
 const test = QUnit.test;
 
 test('should take in an id and either create an array or increment the encountered', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    
-    const expected = true;
+    let dataMon = {
+        captured: 0,
+        encountered: 1,
+        id: 1
+    };
+    const expected = {
+        captured: 0,
+        encountered: 2,
+        id: 1
+    };
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = seenPokemon();
-
+    const actual = seenPokemon('1');
+    
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
-test('time to test a function', (expect) => {
+test('should take an array and stringify it into local storage', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
-    
+    const testedArray = [1, 2, 3, 4];
+    const expected = localStorage.setItem('PDEX', testedArray);
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = true;
+    const actual = setPokedex(testedArray);
 
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
-test('time to test a function', (expect) => {
+test('should grab an stringy item out of localstorage and then parse ', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
-    
+    const stringyItem = ['1', '2', '3', '4'];
+    setPokedex(stringyItem);
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = true;
-
+    const actual = getPokedex();
+    
+    const expected = [1, 2, 3, 4];
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
-test('time to test a function', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
-    const expected = true;
+// skip('time to test a function', (expect) => {
+//     //Arrange
+//     // Set up your arguments and expectations
+//     const expected = true;
     
-    //Act 
-    // Call the function you're testing and set the result to a const
-    const actual = true;
+//     //Act 
+//     // Call the function you're testing and set the result to a const
+//     const actual = true;
 
-    //Expect
-    // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected);
-});
+//     //Expect
+//     // Make assertions about what is expected versus the actual result
+//     expect.equal(actual, expected);
+// });
