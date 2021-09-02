@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { capturePokemon, setPokedexHistory } from './local-storage.js';
+import { capturePokemon } from './local-storage.js';
 import { renderThreePokemon } from './utils.js';
 
 const button = document.querySelector('#catch');
