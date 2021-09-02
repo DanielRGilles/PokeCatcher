@@ -1,5 +1,5 @@
 import { findById } from './utils.js';
-
+import Rawpokemon from './data.js';
 const PDEX = 'PDEX';
 
 export function getPokedex() {
@@ -25,15 +25,27 @@ export function capturePokemon(selectedPokemonId) {
 export function seenPokemon(selectedPokemonId) {
     const pokedex = getPokedex();
     const findPokemon = findById(pokedex, selectedPokemonId);
+    let pokeName = findById(Rawpokemon, selectedPokemonId);
     if (findPokemon) {
         findPokemon.encountered++;
     } else {
         const newItem = {
             captured: 0,
             encountered: 1,
-            id: selectedPokemonId
+            id: selectedPokemonId,
+            name: pokeName.pokemon
         };
         pokedex.push(newItem);
     }
     setPokedex(pokedex);
+}
+export function setPokedexHistory(newPokedex)  {
+    const stringyPokedex = JSON.stringify(newPokedex);
+    localStorage.setItem('PLAYSFORALLTIME', stringyPokedex);
+}
+export function getPokedexHistory() {
+    const stringyPokedex = localStorage.getItem('PLAYSFORALLTIME');
+    if (!stringyPokedex) return [];  
+    const pokedex = JSON.parse(stringyPokedex);
+    return pokedex;
 }
