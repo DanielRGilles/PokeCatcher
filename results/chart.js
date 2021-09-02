@@ -17,18 +17,17 @@ var myChart = new Chart(ctx, { // eslint-disable-line
                 label: 'captured',
                 data: numberofCap,
                 backgroundColor: [
-                    'orange'
+                    'pink',
+                    'red'
                 ],
-
-                borderWidth: 1
             },
             {
                 label: 'encounterd',
                 data: numberofEnc,
                 backgroundColor: [
-                    'red'
+                    'purple',
+                    'maroon',
                 ],
-
                 borderWidth: 1
             }
         ]

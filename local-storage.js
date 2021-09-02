@@ -39,3 +39,13 @@ export function seenPokemon(selectedPokemonId) {
     }
     setPokedex(pokedex);
 }
+export function setPokedexHistory(newPokedex)  {
+    const stringyPokedex = JSON.stringify(newPokedex);
+    localStorage.setItem('PLAYSFORALLTIME', stringyPokedex);
+}
+export function getPokedexHistory() {
+    const stringyPokedex = localStorage.getItem('PLAYSFORALLTIME');
+    if (!stringyPokedex) return [];  
+    const pokedex = JSON.parse(stringyPokedex);
+    return pokedex;
+}

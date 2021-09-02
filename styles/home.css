@@ -54,6 +54,29 @@ body {
     width: 45%;
     height: 25%;
     margin-top: 5%;
-    background-color: rgba(100, 100, 100, .6);
-    color: ivory;
+    background-color: ivory;
+    
+}
+.play-again {
+    position: fixed;
+    top: 3%;
+    left: 2%;
+    width: 135px;
+    height: 45px;
+    border-radius: 5px;
+}
+.reset-btn {
+    width: 120px;
+    height: 60px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 40%;
+    left: 46%;
+    right: 50%;
+}
+.reset-btn:hover {
+    background-color: black;
+    color: white;
+    transition: 1000ms ease-in;
+
 }
