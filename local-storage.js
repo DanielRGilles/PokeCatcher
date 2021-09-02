@@ -21,7 +21,6 @@ export function capturePokemon(selectedPokemonId) {
     setPokedex(pokedex);
 }
 
-
 export function seenPokemon(selectedPokemonId) {
     const pokedex = getPokedex();
     const findPokemon = findById(pokedex, selectedPokemonId);
@@ -39,7 +38,7 @@ export function seenPokemon(selectedPokemonId) {
     }
     setPokedex(pokedex);
 }
-export function setPokedexHistory(newPokedex)  {
+export function setPokedexHistory(newPokedex){
     const stringyPokedex = JSON.stringify(newPokedex);
     localStorage.setItem('PLAYSFORALLTIME', stringyPokedex);
 }
